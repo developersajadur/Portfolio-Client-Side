@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-mono: "__Roboto_Mono_c9cbed", "__Roboto_Mono_Fallback_c9cbed", monospace;
+
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+
+    --primary: 24 9.8% 10%;
+    --primary-foreground: 60 9.1% 97.8%;
+
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 20 14.3% 4.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+
+    --primary: 60 9.1% 97.8%;
+    --primary-foreground: 24 9.8% 10%;
+
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 24 5.7% 82.9%;
+  }
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scroll-behavior: smooth !important;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::selection {
+    @apply bg-teal-400/80 text-foreground
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent;
+  }
+
+  .title-bottom-line {
+    @apply relative mb-7 inline-block border-b-2 border-dashed border-muted-foreground text-xl font-bold text-foreground no-underline after:absolute after:-bottom-[3px] after:left-0 after:h-1 after:w-0 after:bg-gradient-to-r after:from-blue-500 after:to-teal-500 after:transition-all after:duration-300 group-hover:after:w-full;
+  }
+
+  .link-hover {
+    @apply relative inline-block no-underline after:absolute after:-bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-gradient-to-r after:from-blue-500 after:to-teal-500 after:transition-all after:duration-300 group-hover/card:after:w-full hover:after:w-full;
+  }
+}
+
+/* custom scrollbar */
+
+:root {
+  --color-1: #f1f1f1;
+  --color-2: #90e0ef;
+}
+
+
+/* For Webkit-based browsers (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 8px;
+  /* Width of the scrollbar */
+  height: 8px;
+  /* Height of the scrollbar for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-1);
+  /* Background color of the scrollbar track */
+  border-radius: 4px;
+  /* Add border radius to make the scrollbar track look smooth */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-2);
+  /* Light blue color for the scrollbar thumb */
+  border-radius: 4px;
+  /* Add border radius to make the scrollbar thumb look smooth */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  /* Make the scrollbar thin */
+  scrollbar-color: var(--color-2) var(--color-1);
+  /* Light blue color for the scrollbar thumb and background color for the scrollbar track */
+}
