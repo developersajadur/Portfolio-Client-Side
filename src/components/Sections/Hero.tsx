@@ -28,7 +28,7 @@ const Hero = () => {
           width={1000}
           height={1000}
           className="h-[450px] w-[400px] object-cover rounded-xl object-center"
-          src="/public/man-1.jpg"
+          src="https://res.cloudinary.com/devsajadurrahman/image/upload/v1738846791/e1jgd7aaedoef6yvdkkx.jpg"
           alt=""
         />
       </div>

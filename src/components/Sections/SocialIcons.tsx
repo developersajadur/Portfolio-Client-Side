@@ -1,29 +1,65 @@
-'use client';
+"use client";
 
-import { Dock } from '@/components/magicui/dock';
-import { FaGithub, FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import Link from 'next/link';
+import {
+  FaGithub,
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function SocialIcons() {
   return (
-    <div className="flex justify-start items-center w-full">
-      <Dock className='border-none p-0 mt-0'>
-        <Link href="https://github.com" target="_blank" title="GitHub">
-          <FaGithub className="w-8 h-8 text-white" />
-        </Link>
-        <Link href="https://facebook.com" target="_blank" title="Facebook">
-          <FaFacebook className="w-8 h-8 text-blue-600" />
-        </Link>
-        <Link href="https://instagram.com" target="_blank" title="Instagram">
-          <FaInstagram className="w-8 h-8 text-pink-500" />
-        </Link>
-        <Link href="https://linkedin.com" target="_blank" title="LinkedIn">
-          <FaLinkedin className="w-8 h-8 text-blue-700" />
-        </Link>
-        <Link href="https://twitter.com" target="_blank" title="Twitter">
-          <FaTwitter className="w-8 h-8 text-blue-400" />
-        </Link>
-      </Dock>
-    </div>
+    <TooltipProvider>
+      <div className="flex gap-3 mt-3 justify-start items-center w-full">
+        {[
+          {
+            icon: <FaGithub className="w-8 h-8 text-white" />,
+            label: "GitHub",
+            link: "https://github.com",
+          },
+          {
+            icon: <FaFacebook className="w-8 h-8 text-blue-600" />,
+            label: "Facebook",
+            link: "https://facebook.com",
+          },
+          {
+            icon: <FaInstagram className="w-8 h-8 text-pink-500" />,
+            label: "Instagram",
+            link: "https://instagram.com",
+          },
+          {
+            icon: <FaLinkedin className="w-8 h-8 text-blue-700" />,
+            label: "LinkedIn",
+            link: "https://linkedin.com",
+          },
+          {
+            icon: <FaTwitter className="w-8 h-8 text-blue-400" />,
+            label: "Twitter",
+            link: "https://twitter.com",
+          },
+        ].map((social, index) => (
+          <Tooltip key={index}>
+            <TooltipTrigger asChild>
+              <a
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer"
+              >
+                {social.icon}
+              </a>
+            </TooltipTrigger>
+            <TooltipContent>{social.label}</TooltipContent>
+          </Tooltip>
+        ))}
+      </div>
+    </TooltipProvider>
   );
 }

@@ -1,4 +1,5 @@
 import About from "@/components/Sections/About";
+import Experience from "@/components/Sections/Experience";
 import Hero from "@/components/Sections/Hero";
 import TechStack from "@/components/Sections/TechStack";
 import Navbar from "@/components/shared/Navbar/Navbar";
@@ -11,9 +12,10 @@ const HomePage = () => {
         <Navbar />
       </header>
       <main className="container mx-auto max-w-5xl mt-10 pt-16 px-5 lg:px-0">
-        <Hero/>
-        <About/>
-        <TechStack/>
+        <Hero />
+        <About />
+        <TechStack />
+        <Experience/>
       </main>
     </>
   );
