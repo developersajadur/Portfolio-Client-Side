@@ -1,6 +1,6 @@
-import { INavbarOptions } from "@/Types/interface";
+import { TNavbarOptions } from "@/types";
 
-export const NavOptions: INavbarOptions[] = [
+export const NavOptions: TNavbarOptions[] = [
   {
     id: 1,
     label: "About",

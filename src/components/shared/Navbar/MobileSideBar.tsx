@@ -12,7 +12,7 @@ import {
 import LinkItem from "./LinkItem";
 import { RxHamburgerMenu, RxBackpack } from "react-icons/rx";
 import { NavOptions } from "./NavOptions";
-import { INavbarOptions } from "@/Types/interface";
+import { TNavbarOptions } from "@/types";
 
 const MobileSideBar = () => {
   return (
@@ -32,7 +32,7 @@ const MobileSideBar = () => {
           </SheetDescription> */}
 
           <div className="flex gap-3 flex-col items-center">
-            {NavOptions?.map((item: INavbarOptions) => (
+            {NavOptions?.map((item: TNavbarOptions) => (
               <LinkItem key={item?.id} {...item} />
             ))}
           </div>

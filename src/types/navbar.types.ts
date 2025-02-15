@@ -1,4 +1,4 @@
-export interface INavbarOptions {
+export type TNavbarOptions = {
     id: number;
     label: string;
     icon?: string;

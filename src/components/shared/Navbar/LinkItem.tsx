@@ -1,7 +1,7 @@
-import { INavbarOptions } from "@/Types/interface";
+import { TNavbarOptions } from "@/types";
 import Link from "next/link";
 
-const LinkItem = ({ path, label }: INavbarOptions) => {
+const LinkItem = ({ path, label }: TNavbarOptions) => {
   return (
     <Link
       href={path}
