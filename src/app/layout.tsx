@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Roboto_Mono as FontMono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/shared/Navbar/Navbar";
 
 const fontMono = FontMono({
   subsets: ["latin"],
@@ -22,16 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-[#0C0A09] text-[#A8A29E] antialiased",
+          "min-h-screen bg-[#0C0A09] text-muted-foreground antialiased",
           fontMono.variable
         )}
       >
-        <header className="">
-          <Navbar />
-        </header>
-        <main className="container mx-auto max-w-5xl mt-10 pt-16 px-5 lg:px-0">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );
