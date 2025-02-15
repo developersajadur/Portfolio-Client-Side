@@ -2,7 +2,7 @@ export const Experiences = [
     {
       company: "IT Vanilla",
       logo: "https://res.cloudinary.com/devsajadurrahman/image/upload/v1739280246/itvzoczhbilrxz6big8f.jpg",
-      role: "Junior Web Developer",
+      role: "Junior Web Developer (On-Site)",
       startDate: "02 Feb, 2024",
       endDate: "03 Apr, 2024",
       description: [
@@ -15,7 +15,7 @@ export const Experiences = [
     {
       company: "Velocity Digital Inc.",
       logo: "/coderockers-logo.png", // Replace with actual logo path
-      role: "Web Developer",
+      role: "Web Developer (Remote)",
       startDate: "10 Feb, 2025",
       endDate: "Present",
       description: [

@@ -42,7 +42,7 @@ const TechStack = () => {
 
         {/* >Programming Language */}
         <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-3">Programming Language</h2>
+          <h2 className="text-xl text-white font-semibold mb-3">Programming Language</h2>
           <div className="flex flex-wrap gap-6 text-4xl">
             {[
               {
@@ -66,7 +66,7 @@ const TechStack = () => {
 
         {/* Frontend */}
         <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-3">Frontend</h2>
+          <h2 className="text-xl text-white font-semibold mb-3">Frontend</h2>
           <div className="flex flex-wrap gap-6 text-4xl">
             {[
               {
@@ -109,7 +109,7 @@ const TechStack = () => {
 
         {/* Backend */}
         <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-3">Backend</h2>
+          <h2 className="text-xl text-white font-semibold mb-3">Backend</h2>
           <div className="flex flex-wrap gap-6 text-4xl">
             {[
               {
@@ -157,7 +157,7 @@ const TechStack = () => {
 
         {/* Developer & Design Tools */}
         <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-3">
+          <h2 className="text-xl text-white font-semibold mb-3">
             Developer & Design Tools
           </h2>
           <div className="flex flex-wrap gap-6 text-4xl">

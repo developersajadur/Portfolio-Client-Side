@@ -19,6 +19,6 @@ export const NavOptions: INavbarOptions[] = [
   {
     id: 4,
     label: "Contact",
-    path: "#contact",
+    path: "/contact",
   },
 ];

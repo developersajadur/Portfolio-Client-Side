@@ -28,7 +28,7 @@ const Experience = () => {
                   {exp.company} <HiExternalLink className="w-5 h-5" />
                 </a>
               </div>
-              <h2 className="text-xl font-semibold mt-1">{exp.role}</h2>
+              <h2 className="text-lg text-muted-foreground font-medium mt-1">{exp.role}</h2>
               <p className="text-muted-foreground text-sm">{exp.startDate} - {exp.endDate}</p>
               <ul className="mt-2 space-y-1 text-muted-foreground text-sm">
                 {exp.description.map((desc, i) => (
