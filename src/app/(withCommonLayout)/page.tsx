@@ -1,7 +1,7 @@
-import About from "@/components/Sections/About";
-import Experience from "@/components/Sections/Experience";
-import Hero from "@/components/Sections/Hero";
-import TechStack from "@/components/Sections/TechStack";
+import About from "@/components/sections/About";
+import Experience from "@/components/sections/Experience";
+import Hero from "@/components/sections/Hero";
+import TechStack from "@/components/sections/TechStack";
 
 const HomePage = () => {
   return (
