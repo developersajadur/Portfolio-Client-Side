@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Mono as FontMono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Toaster } from "sonner";
 
 const fontMono = FontMono({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
           fontMono.variable
         )}
       >
+          <Toaster richColors position="top-right" />
         {children}
       </body>
     </html>
