@@ -31,7 +31,7 @@ export const createProject = async (project: any) => {
   }
 };
 
-export const getAllProjects = async (page: string = "1", limit: string = "10") => {
+export const getAllProjects = async (page?: string, limit?: string) => {
   try {
     const cookieStore = await cookies();
     const authToken = cookieStore.get("next-auth.session-token")?.value;
@@ -55,3 +55,32 @@ export const getAllProjects = async (page: string = "1", limit: string = "10") =
     return { success: false, message: error.message };
   }
 };
+
+
+export const deleteProject = async (id: string) => {
+  try {
+    const cookieStore = await cookies();
+    const authToken = cookieStore.get("next-auth.session-token")?.value;
+
+    if (!authToken) {
+      throw new Error("Unauthorized: No session token found.");
+    }
+    if(!id){
+      throw new Error("Project id is required");
+    }
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/projects/delete-project/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: authToken,
+      },
+    });
+
+    revalidateTag("PROJECT"); 
+    return await res.json();
+  } catch (error: any) {
+    console.error("Error deleting projects:", error);
+    return { success: false, message: error.message };
+  }
+}

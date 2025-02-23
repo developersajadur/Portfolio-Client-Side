@@ -5,12 +5,10 @@ import Link from "next/link";
 
 const ManageProjectPage = async () => {
   let projects = [];
-  let meta = {}
 
   try {
     const {data} = await getAllProjects();
     projects = data?.result || [];
-    meta = data?.meta
   } catch (error) {
     console.error("Error fetching projects:", error);
   }
@@ -26,7 +24,7 @@ const ManageProjectPage = async () => {
         </Link>
       </div>
       <div>
-        <ManageProject projects={projects} meta={meta} />
+        <ManageProject projects={projects} />
       </div>
     </div>
   );

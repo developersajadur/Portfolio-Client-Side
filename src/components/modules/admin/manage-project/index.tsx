@@ -5,9 +5,18 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { Eye, Edit, Trash } from "lucide-react";
 import Image from "next/image";
-import { TMeta, TProject } from "@/types";
+import {TProject } from "@/types";
+import { deleteProject } from "@/services/project/project.service";
 
-const ManageProject = ({ projects, meta }: { projects: TProject[], meta: TMeta }) => {
+const ManageProject = ({ projects}: { projects: TProject[] }) => {
+
+
+    const handleDeleteProject =async (id: string) => {
+        const res = await deleteProject(id)
+        console.log(res);
+    }
+
+
   if (!projects.length) {
     return <p className="text-center text-gray-500">No projects found.</p>;
   }
@@ -60,7 +69,7 @@ const ManageProject = ({ projects, meta }: { projects: TProject[], meta: TMeta }
                 <Button variant="ghost" size="icon">
                   <Edit className="w-5 h-5 text-green-500" />
                 </Button>
-                <Button variant="ghost" size="icon">
+                <Button onClick={() => handleDeleteProject(project._id)} variant="ghost" size="icon">
                   <Trash className="w-5 h-5 text-red-500" />
                 </Button>
               </TableCell>
