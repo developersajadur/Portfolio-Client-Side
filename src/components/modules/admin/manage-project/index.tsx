@@ -8,6 +8,7 @@ import Image from "next/image";
 import { TProject } from "@/types";
 import { deleteProject } from "@/services/project/project.service";
 import Swal from 'sweetalert2';
+import Link from "next/link";
 
 const ManageProject = ({ projects }: { projects: TProject[] }) => {
 
@@ -87,10 +88,12 @@ const ManageProject = ({ projects }: { projects: TProject[] }) => {
                 </a>
               </TableCell>
               <TableCell className="flex gap-2">
-                <Button variant="ghost" size="icon">
-                  <Eye className="w-5 h-5 text-blue-500" />
+               <Link href={`/dashboard/manage-projects/update-project/${project._id}`}>
+               <Button variant="ghost" size="icon">
+               <Eye className="w-5 h-5 text-blue-500" />
                 </Button>
-                <Button variant="ghost" size="icon">
+               </Link>
+               <Button variant="ghost" size="icon">
                   <Edit className="w-5 h-5 text-green-500" />
                 </Button>
                 <Button onClick={() => handleDeleteProject(project._id)} variant="ghost" size="icon">
