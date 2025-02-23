@@ -5,17 +5,41 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { Eye, Edit, Trash } from "lucide-react";
 import Image from "next/image";
-import {TProject } from "@/types";
+import { TProject } from "@/types";
 import { deleteProject } from "@/services/project/project.service";
+import Swal from 'sweetalert2';
 
-const ManageProject = ({ projects}: { projects: TProject[] }) => {
+const ManageProject = ({ projects }: { projects: TProject[] }) => {
 
 
-    const handleDeleteProject =async (id: string) => {
-        const res = await deleteProject(id)
-        console.log(res);
-    }
-
+  const handleDeleteProject = async (id: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await deleteProject(id);
+        if (res.success) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your project has been deleted.",
+            icon: "success",
+          });
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: res.message || "Failed to delete the project.",
+            icon: "error",
+          });
+        }
+      }
+    });
+  };
 
   if (!projects.length) {
     return <p className="text-center text-gray-500">No projects found.</p>;
@@ -25,7 +49,7 @@ const ManageProject = ({ projects}: { projects: TProject[] }) => {
     <div className="overflow-x-auto p-4">
       <Table>
         <TableHeader>
-          <TableRow className="">
+          <TableRow>
             <TableHead>Image</TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Live URL</TableHead>

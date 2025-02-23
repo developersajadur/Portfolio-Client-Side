@@ -65,22 +65,27 @@ export const deleteProject = async (id: string) => {
     if (!authToken) {
       throw new Error("Unauthorized: No session token found.");
     }
-    if(!id){
+    if (!id) {
       throw new Error("Project id is required");
     }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/projects/delete-project/${id}`, {
       method: "DELETE",
       headers: {
-        "Content-Type": "application/json",
         Authorization: authToken,
       },
     });
 
-    revalidateTag("PROJECT"); 
-    return await res.json();
+    revalidateTag("PROJECT");
+
+    if (!res.ok) {
+      throw new Error(`HTTP Error: ${res.status} - ${res.statusText}`);
+    }
+
+    const text = await res.text(); // Read response as text first
+    return text ? JSON.parse(text) : { success: true, message: "Project deleted successfully" };
   } catch (error: any) {
-    console.error("Error deleting projects:", error);
+    console.error("Error deleting project:", error);
     return { success: false, message: error.message };
   }
-}
+};
