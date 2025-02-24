@@ -1,20 +1,21 @@
-import ManageProject from "@/components/modules/admin/manage-project";
-import { Button } from "@/components/ui/button";
-import { getAllProjects } from "@/services/project/project.service";
-import Link from "next/link";
+import ManageProject from '@/components/modules/admin/manage-projects';
+import { Button } from '@/components/ui/button';
+import { getAllBlogs } from '@/services/blog/blog.service';
+import Link from 'next/link';
+import React from 'react';
 
-const ManageProjectPage = async () => {
-  let projects = [];
+const ManageBlogsPage = async() => {
 
-  try {
-    const {data} = await getAllProjects();
-    projects = data?.result || [];
-  } catch (error) {
-    console.error("Error fetching projects:", error);
-  }
-
-  return (
-    <div className="p-6">
+      let projects = [];
+    
+      try {
+        const {data} = await getAllBlogs();
+        projects = data?.result || [];
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      }
+    return (
+        <div className="p-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold mb-4">Manage Projects</h1>
         <Link href="/dashboard/manage-projects/create-project">
@@ -27,7 +28,7 @@ const ManageProjectPage = async () => {
         <ManageProject projects={projects} />
       </div>
     </div>
-  );
+    );
 };
 
-export default ManageProjectPage;
+export default ManageBlogsPage; 

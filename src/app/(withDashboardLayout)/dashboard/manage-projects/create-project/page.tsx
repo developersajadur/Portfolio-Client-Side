@@ -1,4 +1,4 @@
-import CreateProjectForm from '@/components/modules/admin/manage-project/CreateProjectForm';
+import CreateProjectForm from '@/components/modules/admin/manage-projects/CreateProjectForm';
 import React from 'react';
 
 const CreateProjectPage = () => {

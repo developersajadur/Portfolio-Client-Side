@@ -1,4 +1,4 @@
-import UpdateProjectForm from '@/components/modules/admin/manage-project/UpdateProjectForm';
+import UpdateProjectForm from '@/components/modules/admin/manage-projects/UpdateProjectForm';
 import React from 'react';
 
 const UpdateProjectPage = () => {

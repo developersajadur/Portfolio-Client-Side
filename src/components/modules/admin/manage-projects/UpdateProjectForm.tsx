@@ -14,9 +14,9 @@ import { getSingleProject, updateProject } from "@/services/project/project.serv
 import { useParams } from "next/navigation";
 
 const projectSchema = z.object({
-  name: z.string().min(3, "Project name must be at least 3 characters."),
-  description: z.string().min(10, "Description must be at least 10 characters."),
-  technologies: z.string().min(2, "At least one technology is required."),
+  name: z.string().min(3, "Project name must be at least 3 characters.").optional(),
+  description: z.string().min(10, "Description must be at least 10 characters.").optional(),
+  technologies: z.string().min(2, "At least one technology is required.").optional(),
   liveUrl: z.string().url("Invalid URL format.").optional(),
   clientSideUrl: z.string().url("Invalid URL format.").optional(),
   serverSideUrl: z.string().url("Invalid URL format.").optional(),
@@ -79,7 +79,6 @@ const UpdateProjectForm = () => {
     try {
       setLoading(true);
      const res = await updateProject(projectId as string, data);
-     console.log(res);
      if(res.success){
         toast.success("Project updated successfully!");
      }
