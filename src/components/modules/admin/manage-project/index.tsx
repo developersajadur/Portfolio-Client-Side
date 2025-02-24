@@ -88,14 +88,14 @@ const ManageProject = ({ projects }: { projects: TProject[] }) => {
                 </a>
               </TableCell>
               <TableCell className="flex gap-2">
-               <Link href={`/dashboard/manage-projects/update-project/${project._id}`}>
                <Button variant="ghost" size="icon">
                <Eye className="w-5 h-5 text-blue-500" />
-                </Button>
-               </Link>
+                </Button>    
+               <Link href={`/dashboard/manage-projects/update-project/${project._id}`}>
                <Button variant="ghost" size="icon">
                   <Edit className="w-5 h-5 text-green-500" />
                 </Button>
+                </Link>
                 <Button onClick={() => handleDeleteProject(project._id)} variant="ghost" size="icon">
                   <Trash className="w-5 h-5 text-red-500" />
                 </Button>

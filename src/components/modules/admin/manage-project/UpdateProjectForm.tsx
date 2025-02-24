@@ -75,6 +75,7 @@ const UpdateProjectForm = () => {
   }, [projectId, setValue]);
 
   const onSubmit = async (data: ProjectFormData) => {
+    console.log(data);
     try {
       setLoading(true);
      const res = await updateProject(projectId as string, data);

@@ -132,15 +132,22 @@ export const updateProject = async (id: string, project: any) => {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/projects/update-project/${id}`, {
       method: "PUT",
-      body: project,
       headers: {
-        Authorization: authToken,
+        "Content-Type": "application/json",
+        Authorization: authToken, 
       },
+      body: JSON.stringify(project),
     });
-    revalidateTag("PROJECT");
-    return res.json();
 
-  } catch (error) {
-    console.log(error);
+    if (!res.ok) {
+      throw new Error(`Error: ${res.status} ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    revalidateTag("PROJECT");
+    return data;
+  } catch (error: any) {
+    console.error("Error updating project:", error);
+    return { success: false, message: error.message };
   }
-}
+};
