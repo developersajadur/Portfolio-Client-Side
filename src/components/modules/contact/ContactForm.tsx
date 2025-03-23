@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { contactSchema } from "./contactValidation";
+import { toast } from "sonner";
 
 
 const ContactForm = () => {
@@ -18,6 +19,7 @@ const ContactForm = () => {
       });
     
       const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        toast.success("You Are Contact Successfully")
         console.log("Contact Data Submitted:", data);
       };
     

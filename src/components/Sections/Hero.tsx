@@ -4,13 +4,13 @@ import SocialIcons from "./SocialIcons";
 const Hero = () => {
   return (
     <section
-      id="home"
+      id="#home"
       className="flex items-center justify-between gap-4 flex-col md:flex-row relative"
     >
       {/* Left Side Content */}
       <div className="mb-2 flex flex-col items-start">
         <h2 className="gradient-text text-3xl sm:text-3xl md:text-3xl xl:text-4xl 2xl:text-4xl my-2 font-bold">
-          Web Developer & Software Engineer
+          Full Stack Web Developer
         </h2>
         <p className="text-2xl text-muted-foreground font-semibold mb-2">
           Md. Sajadur Rahman

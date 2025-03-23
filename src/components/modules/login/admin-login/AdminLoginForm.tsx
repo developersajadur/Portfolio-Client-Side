@@ -12,11 +12,13 @@ import { TAdminLogin } from '@/types';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { loginUser } from '@/services/AuthServices';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 
 const AdminLoginForm = () => {
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirectPath");
   const router = useRouter()
   const {
     register,
@@ -31,7 +33,11 @@ const AdminLoginForm = () => {
     try {
       const response = await loginUser(data.email, data.password);
       if (response.success) {
-        router.push('/dashboard');
+        if (redirect) {
+          router.push(redirect);
+        } else {
+          router.push("/dashboard");
+        }
         toast.success("Login successful!");
       }
     } catch (error: any) {

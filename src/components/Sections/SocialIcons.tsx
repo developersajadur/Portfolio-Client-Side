@@ -3,10 +3,12 @@
 import {
   FaGithub,
   FaFacebook,
-  FaInstagram,
   FaLinkedin,
-  FaTwitter,
+  FaDiscord,
+  FaTelegram,
 } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { IoIosMail } from "react-icons/io";
 import {
   Tooltip,
   TooltipContent,
@@ -22,27 +24,37 @@ export default function SocialIcons() {
           {
             icon: <FaGithub className="w-8 h-8 text-white" />,
             label: "GitHub",
-            link: "https://github.com",
-          },
-          {
-            icon: <FaFacebook className="w-8 h-8 text-blue-600" />,
-            label: "Facebook",
-            link: "https://facebook.com",
-          },
-          {
-            icon: <FaInstagram className="w-8 h-8 text-pink-500" />,
-            label: "Instagram",
-            link: "https://instagram.com",
+            link: "https://github.com/developersajadur",
           },
           {
             icon: <FaLinkedin className="w-8 h-8 text-blue-700" />,
             label: "LinkedIn",
-            link: "https://linkedin.com",
+            link: "https://www.linkedin.com/in/sajadurrahman/",
           },
           {
-            icon: <FaTwitter className="w-8 h-8 text-blue-400" />,
-            label: "Twitter",
-            link: "https://twitter.com",
+            icon: <IoIosMail className="w-8 h-8 text-pink-500" />,
+            label: "Mail",
+            link: "mailto:itzmesojib@gmail.com",
+          },
+          {
+            icon: <IoLogoWhatsapp className="w-8 h-8 text-green-500" />,
+            label: "WhatsApp",
+            link: "https://wa.me/+8801787448412",
+          },
+          {
+            icon: <FaDiscord className="w-8 h-8 text-blue-600" />,
+            label: "Discord",
+            link: "https://discord.com/users/developersajadur",
+          },
+          {
+            icon: <FaTelegram className="w-8 h-8 text-blue-600" />,
+            label: "Telegram",
+            link: "https://t.me/developersajadur",
+          },
+          {
+            icon: <FaFacebook className="w-8 h-8 text-blue-600" />,
+            label: "Facebook",
+            link: "https://web.facebook.com/sajadurrahman.dev",
           },
         ].map((social, index) => (
           <Tooltip key={index}>

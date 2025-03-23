@@ -36,7 +36,7 @@ import {
 const TechStack = () => {
   return (
     <TooltipProvider>
-      <section id="TechStack" className="pt-20 ">
+      <section id="#TechStack" className="pt-20 ">
         <h1 className="text-center text-4xl text-white mb-4">Tech Stack</h1>
         <div className="h-0.5 border-b border-[#292524] my-5"></div>
 
