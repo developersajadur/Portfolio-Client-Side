@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import { LuGithub, LuArrowUpRight } from "react-icons/lu";
-import Link from "next/link";
 import { TProject } from "@/types";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
