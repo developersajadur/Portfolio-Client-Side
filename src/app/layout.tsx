@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
-import { Roboto_Mono as FontMono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
+import { Inter as FontSans, Roboto_Mono as FontMono } from "next/font/google";
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 const fontMono = FontMono({
   subsets: ["latin"],
   variable: "--font-mono",
-  weight: ["400", "500", "700"], // Choose weights you need
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -19,14 +25,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen bg-[#0C0A09] text-muted-foreground antialiased",
-          fontMono.variable
-        )}
-      >
-          <Toaster richColors position="top-right" />
+    <html lang="en" suppressHydrationWarning className={`${fontSans.variable} ${fontMono.variable}`}>
+      <body className={cn("min-h-screen bg-background text-foreground antialiased")}>
+        <Toaster richColors position="top-right" />
         {children}
       </body>
     </html>

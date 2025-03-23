@@ -8,7 +8,7 @@ import Image from "next/image";
 import { TBlog } from "@/types";
 import Swal from 'sweetalert2';
 import Link from "next/link";
-import { deleteBlog } from "@/services/blog/blog.service";
+import { deleteBlog } from "@/services/BlogServices";
 
 const ManageBlogs = ({ blogs }: { blogs: TBlog[] }) => {
 

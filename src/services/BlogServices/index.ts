@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 export const createBlog = async (blog: any) => {
   try {
     const cookieStore = await cookies();
-    const authToken = cookieStore.get("next-auth.session-token")?.value;
+    const authToken = cookieStore.get("token")?.value;
 
     if (!authToken) {
       throw new Error("Unauthorized: No session token found.");
@@ -33,19 +33,9 @@ export const createBlog = async (blog: any) => {
 
 export const getAllBlogs = async (page?: string, limit?: string) => {
   try {
-    const cookieStore = await cookies();
-    const authToken = cookieStore.get("next-auth.session-token")?.value;
-
-    if (!authToken) {
-      throw new Error("Unauthorized: No session token found.");
-    }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blogs?limit=${limit}&page=${page}`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: authToken,
-      },
       next: { tags: ["BLOG"] }, // ✅ Keeps revalidation inside `next` property
     });
 
@@ -59,19 +49,10 @@ export const getAllBlogs = async (page?: string, limit?: string) => {
 
 export const getSingleBlog = async (blogId: string) => {
   try {
-    const cookieStore = await cookies();
-    const authToken = cookieStore.get("next-auth.session-token")?.value;
 
-    if (!authToken) {
-      throw new Error("Unauthorized: No session token found.");
-    }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blogs/${blogId}`, {
       method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: authToken,
-      },
       credentials: "include",
       next: {
         tags: ["BLOG"],
@@ -91,7 +72,7 @@ export const deleteBlog = async (id: string) => {
     console.log(id);
   try {
     const cookieStore = await cookies();
-    const authToken = cookieStore.get("next-auth.session-token")?.value;
+    const authToken = cookieStore.get("token")?.value;
 
     if (!authToken) {
       throw new Error("Unauthorized: No session token found.");
@@ -125,7 +106,7 @@ export const deleteBlog = async (id: string) => {
 export const updateBlog = async (id: string, blog: any) => {
   try {
     const cookieStore = await cookies();
-    const authToken = cookieStore.get("next-auth.session-token")?.value;
+    const authToken = cookieStore.get("token")?.value;
 
     if (!authToken) {
       throw new Error("Unauthorized: No session token found.");

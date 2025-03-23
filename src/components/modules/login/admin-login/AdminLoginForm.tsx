@@ -1,17 +1,23 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { signIn } from 'next-auth/react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { adminLoginValidationSchema } from './adminLoginSchema.validation';
 import { TAdminLogin } from '@/types';
-import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { useState } from 'react';
+import { toast } from 'sonner';
+import { loginUser } from '@/services/AuthServices';
+import { useRouter } from 'next/navigation';
+
 
 const AdminLoginForm = () => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -20,16 +26,19 @@ const AdminLoginForm = () => {
     resolver: zodResolver(adminLoginValidationSchema),
   });
 
-  const onSubmit = (data: TAdminLogin) => {
-    console.log('Login Data:', data);
-  };
-
-  const handleGoogleSignIn = () => {
-    signIn('google', { callbackUrl: '/dashboard' });
-  };
-
-  const handleGithubSignIn = () => {
-    signIn('github', { callbackUrl: '/dashboard' });
+  const onSubmit = async(data: TAdminLogin) => {
+    setLoading(true);
+    try {
+      const response = await loginUser(data.email, data.password);
+      if (response.success) {
+        router.push('/dashboard');
+        toast.success("Login successful!");
+      }
+    } catch (error: any) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -44,7 +53,7 @@ const AdminLoginForm = () => {
             <div>
               <Label htmlFor="email">Email</Label>
               <Input
-                type="email"
+                type="email" 
                 id="email"
                 placeholder="Enter your email"
                 {...register('email')}
@@ -65,32 +74,11 @@ const AdminLoginForm = () => {
             </div>
 
             {/* Submit Button */}
-            <Button type="submit" className="w-full">
-              Login
+            <Button type="submit" className="w-full" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
             </Button>
           </form>
 
-          {/* Divider */}
-          <div className="relative my-4">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">Or continue with</span>
-            </div>
-          </div>
-
-          {/* OAuth Buttons */}
-          <div className="flex flex-col space-y-3">
-            <Button variant="outline" className="flex items-center justify-center gap-2" onClick={handleGoogleSignIn}>
-              <FaGoogle className="text-red-500" />
-              Sign in with Google
-            </Button>
-            <Button variant="outline" className="flex items-center justify-center gap-2" onClick={handleGithubSignIn}>
-              <FaGithub />
-              Sign in with GitHub
-            </Button>
-          </div>
         </CardContent>
       </Card>
     </div>

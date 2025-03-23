@@ -1,6 +1,6 @@
 export * from './navbar.types'
 export * from './contact.types'
 export * from './admin-login.types'
-export * from './product.types'
+export * from './portfolio.types'
 export * from './meta.types'
 export * from './blog.types'

@@ -6,7 +6,7 @@ import { HiExternalLink } from "react-icons/hi";
 
 const Experience = () => {
   return (
-    <section id="experience" className="pt-20 text-white">
+    <section id="experience" className="pt-20 text-white mb-20">
       <h1 className="text-center text-4xl mb-4">Experience</h1>
       <div className="h-0.5 border-b border-[#292524] my-5"></div>
 

@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 export const createProject = async (project: any) => {
   try {
     const cookieStore = await cookies();
-    const authToken = cookieStore.get("next-auth.session-token")?.value;
+    const authToken = cookieStore.get("token")?.value;
 
     if (!authToken) {
       throw new Error("Unauthorized: No session token found.");
@@ -33,19 +33,9 @@ export const createProject = async (project: any) => {
 
 export const getAllProjects = async (page?: string, limit?: string) => {
   try {
-    const cookieStore = await cookies();
-    const authToken = cookieStore.get("next-auth.session-token")?.value;
-
-    if (!authToken) {
-      throw new Error("Unauthorized: No session token found.");
-    }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/projects?limit=${limit}&page=${page}`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: authToken,
-      },
       next: { tags: ["PROJECT"] }, // ✅ Keeps revalidation inside `next` property
     });
 
@@ -59,19 +49,9 @@ export const getAllProjects = async (page?: string, limit?: string) => {
 
 export const getSingleProject = async (projectId: string) => {
   try {
-    const cookieStore = await cookies();
-    const authToken = cookieStore.get("next-auth.session-token")?.value;
-
-    if (!authToken) {
-      throw new Error("Unauthorized: No session token found.");
-    }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/projects/${projectId}`, {
       method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: authToken,
-      },
       credentials: "include",
       next: {
         tags: ["PROJECT"],
@@ -90,7 +70,7 @@ export const getSingleProject = async (projectId: string) => {
 export const deleteProject = async (id: string) => {
   try {
     const cookieStore = await cookies();
-    const authToken = cookieStore.get("next-auth.session-token")?.value;
+    const authToken = cookieStore.get("token")?.value;
 
     if (!authToken) {
       throw new Error("Unauthorized: No session token found.");
@@ -124,7 +104,7 @@ export const deleteProject = async (id: string) => {
 export const updateProject = async (id: string, project: any) => {
   try {
     const cookieStore = await cookies();
-    const authToken = cookieStore.get("next-auth.session-token")?.value;
+    const authToken = cookieStore.get("token")?.value;
 
     if (!authToken) {
       throw new Error("Unauthorized: No session token found.");

@@ -1,5 +1,5 @@
 
-import { AppSidebar } from "@/components/modules/admin/sidebar/app-sidebar";
+import { AppSidebar } from "@/components/modules/admin/shared/app-sidebar";
 import {
   SidebarInset,
   SidebarProvider,

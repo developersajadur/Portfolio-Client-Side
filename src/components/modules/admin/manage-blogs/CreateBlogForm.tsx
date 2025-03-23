@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { createBlog } from "@/services/blog/blog.service";
+import { createBlog } from "@/services/BlogServices";
 
 const blogSchema = z.object({
   name: z.string().min(3, "Blog name must be at least 3 characters."),

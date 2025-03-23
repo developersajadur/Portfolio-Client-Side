@@ -1,6 +1,6 @@
 import ManageProject from '@/components/modules/admin/manage-projects';
 import { Button } from '@/components/ui/button';
-import { getAllBlogs } from '@/services/blog/blog.service';
+import { getAllProjects } from '@/services/PortfolioServices';
 import Link from 'next/link';
 import React from 'react';
 
@@ -9,7 +9,7 @@ const ManageBlogsPage = async() => {
       let projects = [];
     
       try {
-        const {data} = await getAllBlogs();
+        const {data} = await getAllProjects();
         projects = data?.result || [];
       } catch (error) {
         console.error("Error fetching projects:", error);

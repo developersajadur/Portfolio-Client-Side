@@ -1,7 +1,8 @@
 
+
 export type TProject = {
     _id: string;
-    slug?: string;
+    slug: string;
     name: string;
     description: string;
     technologies: string[];
@@ -11,5 +12,6 @@ export type TProject = {
     imageUrl: string;
     createdAt?: Date;
     updatedAt?: Date;
+    _v?: string;
   };
   

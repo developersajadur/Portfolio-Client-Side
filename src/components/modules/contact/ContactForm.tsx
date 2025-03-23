@@ -83,7 +83,7 @@ const ContactForm = () => {
 
               {/* Submit Button */}
               <div className="w-full mt-4">
-                <Button type="submit" className="bg-white w-full lg:w-fit text-black py-2 px-4 rounded-lg hover:bg-white hover:text-black">
+                <Button type="submit" className="bg-white w-full lg:w-fit text-black py-2 px-4 rounded-[8px] hover:bg-white hover:text-black">
                   Send Message
                 </Button>
               </div>

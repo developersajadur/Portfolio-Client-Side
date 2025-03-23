@@ -1,7 +1,7 @@
 
 import ManageBlogs from "@/components/modules/admin/manage-blogs";
 import { Button } from "@/components/ui/button";
-import { getAllBlogs } from "@/services/blog/blog.service";
+import { getAllBlogs } from "@/services/BlogServices";
 import Link from "next/link";
 
 const ManageBlogPage = async () => {

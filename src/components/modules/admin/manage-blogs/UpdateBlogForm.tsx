@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { useParams } from "next/navigation";
-import { getSingleBlog, updateBlog } from "@/services/blog/blog.service";
+import { getSingleBlog, updateBlog } from "@/services/BlogServices";
 
 const blogSchema = z.object({
   name: z.string().min(3, "Blog name must be at least 3 characters.").optional(),

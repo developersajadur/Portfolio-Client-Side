@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Eye, Edit, Trash } from "lucide-react";
 import Image from "next/image";
 import { TProject } from "@/types";
-import { deleteProject } from "@/services/project/project.service";
+import { deleteProject } from "@/services/PortfolioServices";
 import Swal from 'sweetalert2';
 import Link from "next/link";
 
