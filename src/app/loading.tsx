@@ -1,4 +1,9 @@
-import Loader from '@/components/Loaders/Loader';
+"use client"
+
+import dynamic from 'next/dynamic';
+const Loader = dynamic(() => import('@/components/Loaders/Loader'), {
+  ssr: false,
+});
 import React from 'react';
 
 const loading = () => {

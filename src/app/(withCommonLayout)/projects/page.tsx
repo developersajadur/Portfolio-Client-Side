@@ -6,7 +6,7 @@ const ProjectPage = async () => {
       let projects = [];
           
             try {
-              const {data} = await getAllProjects(undefined, "6");
+              const {data} = await getAllProjects();
               projects = data?.result || [];
             } catch (error) {
               console.error("Error fetching projects:", error);

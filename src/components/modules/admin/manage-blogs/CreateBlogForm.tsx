@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { createBlog } from "@/services/BlogServices";
-import ReactQuill from "react-quill-new";
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 import "react-quill-new/dist/quill.snow.css";
 
 // Validation Schema
@@ -39,12 +39,12 @@ const CreateBlogForm = () => {
   });
 
   const onSubmit = async (blogData: BlogFormData) => {
-    console.log(blogData);
+    // console.log(blogData);
     setLoading(true);
     const loadingToast = toast.loading("Creating Blog...");
     try {
       const res = await createBlog(blogData);
-      console.log(res);
+      // console.log(res);
       if (res.success) {
         toast.success(res?.message, { id: loadingToast, duration: 2000 });
         reset(); // Reset the form inputs
@@ -140,3 +140,5 @@ const CreateBlogForm = () => {
 };
 
 export default CreateBlogForm;
+
+// export const dynamic = 'force-dynamic'

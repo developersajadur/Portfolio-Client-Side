@@ -66,6 +66,25 @@ export const getSingleBlog = async (blogId: string) => {
     return { success: false, message: error.message };
   }
 };
+export const getSingleBlogBySlug = async (slug: string) => {
+  try {
+
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blogs/slug/${slug}`, {
+      method: 'GET',
+      credentials: "include",
+      next: {
+        tags: ["BLOG"],
+      },
+    });
+
+    const data = await res.json();
+    return data;
+  } catch (error: any) {
+    console.error("Error fetching Blog:", error);
+    return { success: false, message: error.message };
+  }
+};
 
 
 export const deleteBlog = async (id: string) => {
