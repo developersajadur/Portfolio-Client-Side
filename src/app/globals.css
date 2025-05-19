@@ -94,6 +94,38 @@ body {
   scrollbar-color: var(--color-2) var(--color-1);
 }
 
+
+
+/* Custom styles for ReactQuill */
+.quill-input .ql-container {
+  background-color: transparent;
+  border: 1px solid #748195;
+  border-radius: 0.5rem; /* rounded-lg */
+  color: white;
+  padding: 0.75rem; /* same as p-3 */
+  min-height: 150px;
+}
+
+.quill-input .ql-toolbar {
+  background-color: transparent;
+  border: 1px solid #748195;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.quill-input .ql-toolbar .ql-picker-label,
+.quill-input .ql-toolbar .ql-stroke,
+.quill-input .ql-toolbar .ql-fill {
+  color: white !important;
+  stroke: white !important;
+  fill: white !important;
+}
+
+.quill-input .ql-editor {
+  color: white;
+}
+
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

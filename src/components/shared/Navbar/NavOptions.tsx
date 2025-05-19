@@ -14,11 +14,16 @@ export const NavOptions: TNavbarOptions[] = [
   {
     id: 3,
     label: "Projects",
-    path: "#projects",
+    path: "/projects",
   },
   {
     id: 4,
     label: "Contact",
     path: "#contact",
+  },
+  {
+    id: 5,
+    label: "Blogs",
+    path: "/blogs",
   },
 ];
